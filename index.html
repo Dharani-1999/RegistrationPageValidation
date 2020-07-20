@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <form style="max-width:700px;margin:auto"></form>
+        <div class="row">
+        <div class="sign-in">
+           <div class="a"><img src="image.jpg" style="height:50px;"></div>
+           <div class="b"><h2>Registration Form</h2></div>
+        </div>
+
+        <label for="name" ><b><h3>Name</h3></b></label>
+        <div class="input-container">
+            <input class="input-field" type="text" name="name" placeholder="Enter name" required>
+        </div>
+
+        <label for="date" ><b><h3>Date of birth </h3></b></label>
+        <div class="input-container">
+            <input type="date" id="birthday" name="birthday">
+        </div>
+        <p id="udob"></p>
+
+        <label for="phone" ><b><h3>Mobile number</h3></b></label>
+        <div class="input-container">
+            <input onblur="mobileValidation()" class="input-field" id="mn" type="text" name="phone" placeholder="Enter mobile number" required> 
+        </div>
+        <p id="mobile"></p>   
+
+        <label for="email" ><b><h3>Email</h3></b></label>
+        <div class="input-container">
+            <input onblur="mailValidation()" class="input-field" id="eid" type="text" placeholder="Enter email" name="email" required>
+        </div>
+        <p id="uemail"></p>
+
+        <label for="username" ><b><h3>Username</h3></b></label>
+        <div class="input-container">
+            <input onblur="unameValidation()" class="input-field" id="uname" type="text" placeholder="Enter username" name="username" required>
+        </div>
+        <p id="puname"></p>
+
+        <label for="password" ><b><h3>Password</h3></b></label>
+        <div class="input-container">
+            <input onblur="pwdValidation()" class="input-field" id="pwd" type="password" name="password" placeholder="Password" required>
+        </div>
+        <p id="upwd"></p>
+        <br>
+
+        <input type="submit"  id="submit" value="            Register">
+
+        <br/><br/>
+
+        </div>
+    </form>
+    </div>   
+    
+        <script>
+            function unameValidation(){
+                var name=document.getElementById("uname");
+                let unamePattern=/^[a-zA-Z]+$/;
+                if(unamePattern.test(name.value)){
+                    document.getElementById("puname").innerHTML=" ";
+                }
+                else{
+                    document.getElementById("puname").innerHTML="Username should contain only characters";
+                }
+            }
+            function pwdValidation(){
+                var pass=document.getElementById("pwd");
+                let pwdPattern=/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+                if(pwdPattern.test(pass.value)){
+                    document.getElementById("upwd").innerHTML="good";
+                }
+                else{
+                    document.getElementById("upwd").innerHTML="Enter strong password i.e. password should contain atleast one small letter,one capital letter,one special character,one number and should contain atleast 8 characters";
+                }
+            }
+            function mobileValidation(){
+                var mobile=document.getElementById("mn");
+                let mobilePattern=/^([789]{1})([0-9]{9})/;
+                let umn=mobile.value
+                if(mobilePattern.test(umn)){
+                    document.getElementById("mobile").innerHTML=" ";
+                }
+                else{
+                    document.getElementById("mobile").innerHTML="Enter valid phone number";
+                }
+            }
+            function mailValidation(){
+                var email=document.getElementById("eid");
+                let mailPattern=/^([a-zA-Z0-9._-])+\@([a-zA-Z0-9.-])+\.([a-zA-Z]{2,4})$/;
+                //let eid=email.value;
+                if(mailPattern.test(email.value)){
+                    document.getElementById("uemail").innerHTML=" ";
+                }
+                else{
+                    document.getElementById("uemail").innerHTML="Enter valid email id";
+                }
+            }
+            </script>
+    
+</body>
+</html>
